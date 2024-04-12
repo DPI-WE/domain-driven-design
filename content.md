@@ -71,6 +71,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
+      # TODO: move this business logic to the model layer
       if @order.total_price >= 100
         @order.update(discount_applied: true, discount_amount: 10)
       end
