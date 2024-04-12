@@ -97,6 +97,9 @@ Now we'll refactor the order discount logic into the Order model. The Order mode
 </aside>
 
 ```ruby
+# app/models/application_record.rb
+class ApplicationRecord < ActiveRecord::Base; end
+
 # app/models/order.rb
 class Order < ApplicationRecord
   before_save :apply_discount
@@ -111,7 +114,6 @@ class Order < ApplicationRecord
   end
 end
 ```
-<!-- TODO: make it a coding exercise later
 {: .repl #order title="Order Model" readonly_lines="[1,2,3,4,5]"}
 
 ```ruby
@@ -123,7 +125,7 @@ RSpec.describe Order, type: :model do
     expect(order.discount_amount).to eq(10)
   end
 ```
-{: .repl-test #order_model_test_1 for="order_model" title="Order Model applies discounts correctly > 100" points="2" }
+{: .repl-test #order_model_test_1 for="order" title="Order Model applies discounts correctly > 100" points="2" }
 
 ```ruby
 RSpec.describe Order, type: :model do
@@ -134,9 +136,7 @@ RSpec.describe Order, type: :model do
   end
 end
 ```
-{: .repl-test #order_model_test_2 for="order_model" title="Order Model applies discounts correctly < 100>" points="2" }
-
--->
+{: .repl-test #order_model_test_2 for="order" title="Order Model applies discounts correctly < 100>" points="2" }
 
 Now our `OrdersController` can simply save an `Order` without having to apply discounts (or be concerned with any new business logic we add later).
 
