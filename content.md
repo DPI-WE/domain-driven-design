@@ -117,6 +117,98 @@ event.add_attendee(current_user)
   - Incorrect. Domain-Driven Design does not eliminate the need for user feedback; user insights are crucial for refining the domain model.
 {: .choose_best #ddd_benefits title="Benefits of Domain-Driven Design" points="1" answer="3" }
 
+## Coding Exercise: Refactor Order Processing Logic into a Domain Model
+Refactor the business logic for order processing, currently embedded in a controller, into the Order domain model. This will demonstrate the encapsulation of business logic within the domain model, making the controller leaner and the model richer—a key practice in Domain-Driven Design.
+
+### Initial Controller Code
+
+```ruby
+# app/controllers/orders_controller.rb
+class OrdersController < ApplicationController
+  def create
+    @order = Order.new(order_params)
+    if @order.save
+      if @order.total_price >= 100
+        @order.update(discount_applied: true, discount_amount: 10)
+      end
+      redirect_to order_path(@order), notice: 'Order was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:customer_id, :total_price, :discount_applied, :discount_amount)
+  end
+end
+```
+
+### Task: Refactor to Order Model
+Refactor the order discount logic into the Order model. The Order model should automatically apply a discount if certain conditions are met, encapsulating this business rule within the model itself.
+
+<aside>
+  You may want to use an [active record callback](https://guides.rubyonrails.org/active_record_callbacks.html) to automatically apply a discount before saving a record.
+</aside>
+
+```ruby
+# app/models/application_record.rb
+class ApplicationRecord < ActiveRecord::Base; end
+
+# app/models/order.rb
+class Order < ApplicationRecord
+
+end
+```
+{: .repl #order title="Order Model" readonly_lines="[1,2,3,4,5]"}
+
+```ruby
+# spec/models/order_spec.rb
+RSpec.describe Order, type: :model do
+  it 'applies a discount on orders over $100' do
+    order = Order.create(customer_id: 1, total_price: 150)
+    expect(order.discount_applied).to be true
+    expect(order.discount_amount).to eq(10)
+  end
+```
+{: .repl-test #order_model_test_1 for="order_model" title="Order Model applies discounts correctly > 100" points="2" }
+
+```ruby
+RSpec.describe Order, type: :model do
+  it 'does not apply a discount on orders under $100' do
+    order = Order.create(customer_id: 1, total_price: 99)
+    expect(order.discount_applied).to be false
+    expect(order.discount_amount).to be_nil
+  end
+end
+```
+{: .repl-test #order_model_test_2 for="order_model" title="Order Model applies discounts correctly < 100>" points="2" }
+
+Now our `OrdersController` can simply save an `Order` without having to apply discounts (or be concerned with any new business logic we add later).
+
+```ruby
+# app/controllers/orders_controller.rb
+class OrdersController < ApplicationController
+  def create
+    @order = Order.new(order_params)
+    if @order.save
+      redirect_to order_path(@order), notice: 'Order was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:customer_id, :total_price, :discount_applied, :discount_amount)
+  end
+end
+```
+
+By encapsulating business rules within the model, we create a more maintainable and understandable application architecture. This not only simplifies the controller but also aligns the model more closely with the business domain it represents.
+
 ## Conclusion
 Adopting Domain-Driven Design encourages a deeper engagement with the business domain, leading to applications that are more aligned with business needs and logic. By building rich domain models, you encapsulate complex business rules and behaviors, creating a more intuitive and maintainable codebase.
 
