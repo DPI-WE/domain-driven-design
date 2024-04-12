@@ -60,6 +60,63 @@ event.add_attendee(current_user)
 - **Ubiquitous Language**: The model reflects the language and complexity of the business domain, making it easier for developers and domain experts to communicate.
 - **Flexibility**: Business rules and behaviors encapsulated in the model can be easily modified or extended, enhancing the application's ability to evolve with the business.
 
+## Quiz
+
+- What is the primary goal of Domain-Driven Design?
+- To simplify the coding process by reducing the number of classes and methods.
+  - Not quite. Domain-Driven Design focuses more on aligning the software design with business needs, not just simplifying code structure.
+- To ensure the application speaks the same language as domain experts.
+  - Correct! Domain-Driven Design aims to create a common language between developers and domain experts to enhance understanding and communication.
+- To facilitate faster web application rendering.
+  - Incorrect. Domain-Driven Design does not specifically target rendering performance; it focuses on business and domain complexities.
+- To minimize the use of databases in applications.
+  - Incorrect. Domain-Driven Design does not primarily concern database use but rather the alignment of design with business concepts.
+{: .choose_best #Domain-Driven Design_primary_goal title="Primary Goal of Domain-Driven Design" points="1" answer="2" }
+
+- What role do rich domain models play in Domain-Driven Design?
+- They serve as simple data containers.
+  - Incorrect. Rich domain models are more than just data containers; they encapsulate complex business logic and behaviors.
+- They contain validations and relationships but no behaviors.
+  - Incorrect. Rich domain models in Domain-Driven Design should include behaviors, not just data relationships and validations.
+- They encapsulate behaviors, rules, and logic of the domain.
+  - Correct! Rich domain models are central to Domain-Driven Design as they embody the complex logic and rules of the domain.
+- They are solely used for data migration.
+  - Incorrect. Their role is much broader and focuses on representing the domain comprehensively.
+{: .choose_best #Domain-Driven Design_role_models title="Role of Rich Domain Models" points="1" answer="3" }
+
+- Why is encapsulation important in Domain-Driven Design?
+- It enhances the graphical interface of the application.
+  - Incorrect. Encapsulation in Domain-Driven Design is about maintaining business logic within domain models, not about UI aspects.
+- It keeps business logic within the domain model, leading to cleaner and more maintainable code.
+  - Correct! Encapsulation helps keep the domain model focused on the core business logic, enhancing clarity and maintainability.
+- It only allows the use of external APIs.
+  - Incorrect. This answer misrepresents the purpose of encapsulation in the context of Domain-Driven Design.
+- It restricts the application to a single database model.
+  - Incorrect. Encapsulation in Domain-Driven Design does not concern database models directly but rather the containment of business logic.
+{: .choose_best #Domain-Driven Design_importance_encapsulation title="Importance of Encapsulation in Domain-Driven Design" points="1" answer="2" }
+
+- What is ubiquitous language in the context of Domain-Driven Design?
+- A programming language that must be used in all domain-driven applications.
+  - Incorrect. Ubiquitous language refers to common terminology, not a specific programming language.
+- A common language shared between developers and domain experts that improves communication and understanding.
+  - Correct! The ubiquitous language facilitates effective communication by using consistent terminology across the project.
+- The documentation language that must be used throughout the application.
+  - Incorrect. It's about common language in discussions and design, not just documentation.
+- A specific set of technical jargons used in database design.
+  - Incorrect. Ubiquitous language covers all domain aspects, not just database-related terms.
+{: .choose_best #Domain-Driven Design_ubiquitous_language title="Ubiquitous Language in Domain-Driven Design" points="1" answer="2" }
+
+- What is one of the benefits of using Domain-Driven Design in software development?
+- Reduces the need for testing the application.
+  - Incorrect. Domain-Driven Design does not reduce the need for testing; if anything, it underscores the importance of thorough testing aligned with business logic.
+- Increases the complexity of the codebase.
+  - Incorrect. While Domain-Driven Design handles complex domains, it aims to make the code more manageable and aligned with business needs, not unnecessarily complex.
+- Allows for easy modification and extension of business rules.
+  - Correct! One of the key benefits of Domain-Driven Design is that it facilitates the adaptability of the software to evolving business requirements.
+- Eliminates the need for user feedback.
+  - Incorrect. Domain-Driven Design does not eliminate the need for user feedback; user insights are crucial for refining the domain model.
+{: .choose_best #Domain-Driven Design_benefits title="Benefits of Domain-Driven Design" points="1" answer="3" }
+
 ## Conclusion
 Adopting Domain-Driven Design encourages a deeper engagement with the business domain, leading to applications that are more aligned with business needs and logic. By building rich domain models, you encapsulate complex business rules and behaviors, creating a more intuitive and maintainable codebase.
 
