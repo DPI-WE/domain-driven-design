@@ -117,6 +117,7 @@ event.add_attendee(current_user)
   - Incorrect. Domain-Driven Design does not eliminate the need for user feedback; user insights are crucial for refining the domain model.
 {: .choose_best #ddd_benefits title="Benefits of Domain-Driven Design" points="1" answer="3" }
 
+<!-- 
 ## Coding Exercise: Refactor Order Processing Logic into a Domain Model
 Refactor the business logic for order processing, currently embedded in a controller, into the Order domain model. This will demonstrate the encapsulation of business logic within the domain model, making the controller leaner and the model richer—a key practice in Domain-Driven Design.
 
@@ -208,6 +209,8 @@ end
 ```
 
 By encapsulating business rules within the model, we create a more maintainable and understandable application architecture. This not only simplifies the controller but also aligns the model more closely with the business domain it represents.
+
+-->
 
 ## Conclusion
 Adopting Domain-Driven Design encourages a deeper engagement with the business domain, leading to applications that are more aligned with business needs and logic. By building rich domain models, you encapsulate complex business rules and behaviors, creating a more intuitive and maintainable codebase.
